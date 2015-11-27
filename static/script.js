@@ -24,6 +24,12 @@ $(function() { // On Startup
 
   });
 
+  // Set form defaults
+  var current_location = window.location.href.split('/');
+  console.log(current_location);
+  $('#clientResponseForm input[name=url]').val(current_location[0] + '//' + current_location[2]);
+  var session_id = 'AT_' + Math.floor(Math.random()*9999);
+  $('#clientResponseForm input[name=sessionId]').val(session_id);
 });
 
 var at_ussd_respond = function(at_text){
