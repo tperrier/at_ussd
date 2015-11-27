@@ -2,7 +2,7 @@
 Sample USSD apps running on the Africa's Talking Gateway using Bottle
 (http://docs.africastalking.com/ussd)
 '''
-from bottle import Bottle, response, request
+from libs.bottle import Bottle, response, request
 import AfricasTalkingUssd as at
 import at_client
 import re,random,json
@@ -54,7 +54,7 @@ def guessing_game(ussd):
     guess = int(ussd.last)
     target = CACHE[ussd.sessionId]
     guesses = len(ussd.commands) - 1
-    
+
     if guess < target:
         return ussd.con('Sorry, {} is not the number.\nMy number is higher.\n\nGuess count {}'.format(guess,guesses))
     elif guess > target:

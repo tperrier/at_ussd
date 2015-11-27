@@ -1,4 +1,4 @@
-from bottle import Bottle, static_file, response
+from libs.bottle import Bottle, static_file, response
 from AfricasTalkingUssd import enable_cors
 
 client = Bottle()

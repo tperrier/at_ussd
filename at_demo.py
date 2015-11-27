@@ -2,7 +2,7 @@
 A translation of the Africas Talking USSD Tutorial (http://docs.africastalking.com/ussd)
 from PHP to Python. This project creates a simple bottle web app.
 '''
-from bottle import run, post, request, response as bottle_response, hook
+from libs.bottle import run, post, request, response as bottle_response, hook
 
 # create the index route that only accepts post requests
 @post('/')
