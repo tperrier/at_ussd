@@ -5,7 +5,7 @@ Sample USSD apps running on the Africa's Talking Gateway using Bottle
 from libs.bottle import Bottle, response, request
 import AfricasTalkingUssd as at
 import at_client
-import re,random,json
+import re,random,json,argparse
 
 app = Bottle()
 app.mount('/client',at_client.client)
@@ -111,4 +111,11 @@ def text_length(ussd):
     return ussd.con(response_str)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port="8080",debut=True,reloader=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p','--port',default=8080,type=int,help='port to run on. default = 8080')
+    parser.add_argument('-r','--reloader',default=False,action='store_true',help='run with reloader on. default = False')
+    parser.add_argument('-d','--no-debug',dest='debug',default=True,action='store_false',help='run in debug mode. default = True')
+    options = parser.parse_args()
+    print options
+    
+    app.run(host="0.0.0.0",port=options.port,debug=options.debug,reloader=options.reloader)
