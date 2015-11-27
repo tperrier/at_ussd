@@ -41,5 +41,5 @@ var at_ussd_respond = function(at_text){
         console.log(at_text);
     }
 
-    $('#mockDisplay').html(text.replace(/\n/g,"<br>\n"));
+    $('#mockDisplay').html(text);
 }

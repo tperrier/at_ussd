@@ -29,6 +29,7 @@ def index():
             'Random Swahili Words',
             'My Phone Number'
         ])
+        menu += '\n\n  - UW ICTD - '
         return ussd.con(menu)
 
     elif ussd.commands[0] == '1':
@@ -117,5 +118,5 @@ if __name__ == '__main__':
     parser.add_argument('-d','--no-debug',dest='debug',default=True,action='store_false',help='run in debug mode. default = True')
     options = parser.parse_args()
     print options
-    
+
     app.run(host="0.0.0.0",port=options.port,debug=options.debug,reloader=options.reloader)
