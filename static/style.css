@@ -1,0 +1,16 @@
+header {
+  text-align:center;
+  border-bottom:2px lightgray solid;
+}
+
+section {
+  width:40%;
+  padding:20px 4%;
+  float:left;
+}
+
+#mockDisplay {
+  width:250px;
+  height:300px;
+  border:2px solid black;
+}
