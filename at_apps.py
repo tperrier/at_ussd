@@ -27,6 +27,7 @@ def index():
             'Guess A Number',
             'Convert KSH',
             'Random Swahili Words',
+            'Random Hindi Words',
             'My Phone Number'
         ])
         menu += '\n\n  - UW ICTD - '
@@ -39,9 +40,12 @@ def index():
         return convert_ksh(ussd)
 
     elif ussd.commands[0] == '3':
-        return text_length(ussd)
+        return swahili_length(ussd)
 
     elif ussd.commands[0] == '4':
+        return hindi_length(ussd)
+
+    elif ussd.commands[0] == '5':
         return ussd.end(ussd.phoneNumber)
 
 def guessing_game(ussd):
@@ -85,9 +89,16 @@ def convert_ksh(ussd):
 
     return ussd.end('{0:.2f} KSH\n=\n{1:.2f} {2}\n\nThanks for using USSD Converter'.format(ksh,converted,currency))
 
-def text_length(ussd):
+def swahili_length(ussd):
+    words = json.load(open('swahili.json'))
+    return make_word_str(ussd,words)
+
+def hindi_length(ussd):
+    words = json.load(open('hindi.json'))
+    return make_word_str(ussd,words)
+
+def make_word_str(ussd,words):
     # get an integer and return lisporium
-    words = json.load(open('words.json'))
     if len(ussd.commands) == 1:
         return ussd.con('Enter a character length.\n\nEnter a negative number to stop.')
     char_count = int(ussd.last)

@@ -30,13 +30,13 @@ class AfricasTalkingUssd(object):
 
     def response(self,prefix,strfmt,**kwargs):
         text = strfmt.format(**kwargs)
-        return '{0} {1}'.format(prefix,text)
+        return u'{0} {1}'.format(prefix,text)
 
 def make_menu(title='',items=None,limit=7,item_length=25):
     response = title
     if response:
         response += '\n'
-    response += '\n'.join(['{0:d}. {1:s}'.format(idx+1,item[:item_length]) for idx,item in enumerate(items[:limit])])
+    response += '\n'.join([u'{0:d}. {1:s}'.format(idx+1,item[:item_length]) for idx,item in enumerate(items[:limit])])
 
     if len(items) > limit:
         response += '\n98. Next'
